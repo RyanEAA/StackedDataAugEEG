@@ -2,7 +2,7 @@
 
 ## Executive summary
 
-This repository supports experiments in **stacked data augmentation for EEG classification**, centered on combining (and permuting) multiple augmentation strategies—Gaussian noise, time-domain transformations, and GAN-generated synthetic samples—then evaluating downstream classifier performance. It contains (1) dataset loaders for EEG Motor Movement/Imagery data serialized as Pandas pickles, (2) augmentation utilities, (3) an EEGNet-style classifier implementation (TensorFlow/Keras), and (4) a Transformer-based GAN training pipeline (PyTorch) designed to train **one GAN per class**. fileciteturn26file0L1-L1 fileciteturn27file0L1-L1 fileciteturn25file0L1-L1 fileciteturn38file0L1-L1 fileciteturn33file0L1-L1
+This repository supports experiments in **stacked data augmentation for EEG classification**, centered on combining (and permuting) multiple augmentation strategies—Gaussian noise, time-domain transformations, and GAN-generated synthetic samples—then evaluating downstream classifier performance. It contains (1) dataset loaders for EEG Motor Movement/Imagery data serialized as Pandas pickles, (2) augmentation utilities, (3) an EEGNet-style classifier implementation (TensorFlow/Keras), and (4) a Transformer-based GAN training pipeline (PyTorch) designed to train **one GAN per class**.
 
 Enabled connector used for repository inspection: **GitHub**.
 
