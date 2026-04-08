@@ -6,6 +6,19 @@ This repository supports experiments in **stacked data augmentation for EEG clas
 
 Enabled connector used for repository inspection: **GitHub**.
 
+## Data-Flow Diagram
+```mermaid
+  flowchart TD
+  A[Download EEGMMIDB EDF+ from PhysioNet] --> B[Read EDF+ with MNE]
+  B --> C[Extract annotations/events: T0/T1/T2 + run number]
+  C --> D[Epoch into 4s trials -> X of 64, 640]
+  D --> E[Build DataFrame: columns X, label ]
+  E --> F[Write pickles: eegmmidb_train_df.pkl / val / test]
+  F --> G[Load via EEGMMIDBDatasetLoaderV2.py purpose=eegnet or aug]
+  G --> H[Augment: Gaussian noise / time warp-shift / GAN samples]
+  H --> I[Train EEGNet or train classwise GAN PyTorch]
+```
+
 ## Repository structure
 
 At a high level there are two “tracks” in this repo:
@@ -307,7 +320,7 @@ flowchart TD
 - `class EEGMMIDBDataset(torch.utils.data.Dataset)`
   - `__init__(pickle_path, label_map=None, normalize=False, target_class=None, purpose='aug', onehot=False)`
   - `__len__()`
-  - `__getitem__(idx)` fileciteturn26file0L1-L1
+  - `__getitem__(idx)`
 
 **Important parameters/configs:**
 - `label_map`: defaults to a 5-class mapping (`left_hand`, `right_hand`, `both_hands`, `both_feet`, `rest`).
